@@ -1,7 +1,7 @@
 import express, {Request,Response,Application} from 'express';
 
 const app:Application = express()
-const port = 3000
+const port = 8180
 const hostname = '127.0.0.1'
 
 require('dotenv').config();
