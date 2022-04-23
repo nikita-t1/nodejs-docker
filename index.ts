@@ -22,6 +22,10 @@ app.get('/watchtower', (request, response) => {
   response.send("watchtower")
 })
 
+app.get('/watchtower2', (request, response) => {
+  response.send("watchtower2")
+})
+
 app.get('/', (request, response) => {
     response.send("Fuck Yeah")
   })
