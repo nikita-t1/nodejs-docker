@@ -24,4 +24,13 @@ jobs:
       run: |
         pwd
         ls -la
+    - name: Setup3
+      run: |
+        cd /home/runner/work/_temp/ee14c6b9-f3c5-475f-ba2f-5ba214c934e3
+        ls -la
+    - name: Setup4
+      run: |
+        cd /home/runner/work/nodejs-docker
+        ls -la
+        
       
