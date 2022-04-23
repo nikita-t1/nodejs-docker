@@ -18,6 +18,10 @@ app.get('/foo/bar', (request, response) => {
   response.send("foo")
 })
 
+app.get('/watchtower', (request, response) => {
+  response.send("watchtower")
+})
+
 app.get('/', (request, response) => {
     response.send("Fuck Yeah")
   })
