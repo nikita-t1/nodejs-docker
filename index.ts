@@ -6,9 +6,9 @@ const hostname = '127.0.0.1'
 
 require('dotenv').config();
 
-import { Client } from 'pg';
-const client = new Client()
-client.connect()
+//import { Client } from 'pg';
+//const client = new Client()
+//client.connect()
 
 app.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
@@ -23,12 +23,12 @@ app.get('/', (request, response) => {
   })
 
 app.get('/api/times', (request:Request, response:Response) => {
-    client.query('SELECT * FROM public."time"', [], (err, res) => {
+    //client.query('SELECT * FROM public."time"', [], (err, res) => {
         //console.log(res.rows.at(0))        
         //console.log(res.rows.at(0).startTime)
 
-        client.end()
-        response.send(res.rows)
+      //  client.end()
+      //  response.send(res.rows)
 
-    })
+   // })
 })
