@@ -4,7 +4,7 @@ const app:Application = express()
 const port = 8180
 const hostname = '127.0.0.1'
 
-require('dotenv').config();
+//require('dotenv').config();
 
 //import { Client } from 'pg';
 //const client = new Client()
