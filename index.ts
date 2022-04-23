@@ -1,4 +1,5 @@
 import express, {Request,Response,Application} from 'express';
+import path from 'path';
 
 const app:Application = express()
 const port = 8180
@@ -29,6 +30,10 @@ app.get('/watchtower2', (request, response) => {
 app.get('/', (request, response) => {
     response.send("Fuck Yeah")
   })
+
+app.get('/html', (request, response) => {
+  response.sendFile(path.join(__dirname, '/basic.html'));
+})
 
 app.get('/api/times', (request:Request, response:Response) => {
     //client.query('SELECT * FROM public."time"', [], (err, res) => {
