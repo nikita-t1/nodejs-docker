@@ -14,12 +14,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Setup1
+      run: |
+        pwd
+        ls -la
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-    - name: ls
-      run: ls
-    - name: Upload
-      uses: actions/upload-artifact@v1
-      with:
-        name: app
-        path: ///usr/src/app
+    - name: Setup2
+      run: |
+        pwd
+        ls -la
+      
