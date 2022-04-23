@@ -18,4 +18,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 8180
-CMD [ "node", "server.js" ]
+CMD [ "npm", "start" ]
