@@ -2,14 +2,13 @@ FROM node:17
 
 # Create app directory
 WORKDIR /usr/src/app
+RUN echo $(ls)
+RUN echo $(pwd)
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
 COPY package*.json ./
-
-RUN echo $(ls)
-RUN echo $(pwd)
 
 RUN npm install
 # If you are building your code for production
@@ -18,5 +17,5 @@ RUN npm install
 # Bundle app source
 COPY . .
 
-EXPOSE 8080
+EXPOSE 8180
 CMD [ "node", "server.js" ]
