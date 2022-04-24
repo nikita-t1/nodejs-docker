@@ -103,7 +103,7 @@ async function fetchFeed(url: string = "https://hd-source.to/feed/") {
                       content: item.content,
                       link: item.link,
                       download_link: item.link,
-                      image: filename.split('\\').pop()
+                      image: filename.split("/").pop()?.split("\\").pop()
                     }) 
                     // return filename // saved to /path/to/dest/image.jpg
                   });              
