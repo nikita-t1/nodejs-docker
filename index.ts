@@ -43,7 +43,7 @@ function runInterval() {
 async function fetching(){
   console.log(new Date());
   console.log("FETCHING");
-  // fetchFeed()
+  fetchFeed()
 }
 
 class Release {
