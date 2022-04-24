@@ -3,7 +3,6 @@ import path from 'path';
 import Parser from 'rss-parser';
 import rp from 'request-promise';
 import $ from 'cheerio';
-import {Client} from 'pg';
 import download from 'image-downloader'
 import db from "./db/database";
 import fs from 'fs'
@@ -25,7 +24,8 @@ if(! fs.existsSync("img")){
 function downloadImage(url: string, filepath: string ='../../img/') {
   return download.image({
      url,
-     dest: filepath 
+     dest: filepath ,
+     extractFilename: true
   })
 }
 
@@ -81,8 +81,6 @@ class Release {
 async function fetchFeed(url: string = "https://hd-source.to/feed/") {
   let feed = await parser.parseURL(url);
 
-  console.log(feed.title);
-
   feed.items.forEach((item) => {
     db.Release.findAll({
       where: {
@@ -105,7 +103,7 @@ async function fetchFeed(url: string = "https://hd-source.to/feed/") {
                       content: item.content,
                       link: item.link,
                       download_link: item.link,
-                      image: filename
+                      image: filename.split('\\').pop()
                     }) 
                     // return filename // saved to /path/to/dest/image.jpg
                   });              
@@ -115,8 +113,8 @@ async function fetchFeed(url: string = "https://hd-source.to/feed/") {
             //handle error
           });
       } else {
-        console.log(item.title);
-        console.log("Eintrag bereits enthalten");
+        //console.log(item.title);
+        //console.log("Eintrag bereits enthalten");
       }
     });
     
@@ -146,6 +144,10 @@ app.listen(port, hostname, () => {
 app.get('/', (request, response) => {
     response.send("Fuck Yeah")
   })
+
+app.get('/image/:filename', (request, response) => {
+  response.sendFile(path.join(__dirname, '/img/' + request.params.filename));
+})
 
 app.get('/html', (request, response) => {
   response.sendFile(path.join(__dirname, '/basic.html'));
