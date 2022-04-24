@@ -6,6 +6,7 @@ import $ from 'cheerio';
 import {Client} from 'pg';
 import download from 'image-downloader'
 import db from "./db/database";
+import fs from 'fs'
 
 const app:Application = express();
 const port = 8180;
@@ -14,6 +15,12 @@ const hostname = '0.0.0.0';
 const parser  = new Parser();
 
 db.sequelizeInstance.sync();
+
+console.log(process.cwd());
+if(! fs.existsSync("img")){
+  console.log("no folder ");
+  fs.mkdirSync("img")
+}
 
 function downloadImage(url: string, filepath: string ='../../img/') {
   return download.image({
@@ -36,7 +43,7 @@ function runInterval() {
 async function fetching(){
   console.log(new Date());
   console.log("FETCHING");
-  fetchFeed()
+  // fetchFeed()
 }
 
 class Release {
