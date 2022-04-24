@@ -2,6 +2,7 @@
     "extends": "@tsconfig/node17/tsconfig.json",
     "esModuleInterop": true,
     "compilerOptions": {
+        "module": "commonjs",
         "watch": true,
     }
 }
